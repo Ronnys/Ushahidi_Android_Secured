@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title">Ushahidi Logo here</string>
-    <string name="app_name">Ushahidi</string>
-    <string name="add_incident">Ushahidi | Add Report</string>
-    <string name="view_incident">Ushahidi | View Report</string>
-    <string name="incident_details">Ushahidi | Report Detail</string>
-    <string name="app_settings">Ushahidi | Settings </string>
-    <string name="ushahidi_about">Ushahidi | About </string>
-    <string name="ushahidi_sync">Ushahidi | Synchronize </string>
+    <string name="app_name">Ushahidi-Linda</string>
+    <string name="add_incident">Ushahidi-Linda | Add Report</string>
+    <string name="view_incident">Ushahidi-Linda | View Report</string>
+    <string name="incident_details">Ushahidi-Linda | Report Detail</string>
+    <string name="app_settings">Ushahidi-Linda | Settings </string>
+    <string name="ushahidi_about">Ushahidi-Linda | About </string>
+    <string name="ushahidi_sync">Ushahidi-Linda | Synchronize </string>
     <string name="ushahidi_splash_screen">Ushahidi | Splash Screen"</string>
     <string name="date_time">Event Title</string>
     <string name="prompt_mesg">Choose A Category to Filter</string>
@@ -52,8 +52,12 @@
 	<string name="hint_option_location">The location where you want to store items saved from the selected instance.
 </string>
 	<string name="hint_SD_save_path">Type a folder name</string>
-	<string name="hint_domain">Select the Ushahidi instance that you wish to interact with.</string>
+	<string name="hint_domain">Enter the Ushahidi server to use. HTTP/S recommended for security.</string>
 	<string name="chk_auto_fetch">Auto sync</string>
+	
+	<string name="txt_orbot_enable">Enable Orbot (Tor) Use</string>
+	<string name="hint_orbot_enable">Use this for anonymity, anti-surveillence, privacy</string>
+	
 	<string name="chk_sms_send">Send SMS to Ushahidi</string>
 	<string name="hint_sms_send">This means all incoming sms will be pushed to Ushahidi</string>
 	<string name="hint_auto_fetch">Ushahidi will automatically download new reports.</string>
@@ -64,15 +68,15 @@
 	<string name="txt_countries">Select a default country</string>
 	<string name="txt_domain">Choose your website</string>
 	<string name="txt_first_name">First name</string>
-	<string name="hint_first_name">For attribution when submitting a report (optional).</string>
+	<string name="hint_first_name">For attribution when submitting a report (optional/anonymous).</string>
 	<string name="txt_last_name">Last name</string>
-	<string name="hint_last_name">Also for attribution when submitting a report (optional).</string>
+	<string name="hint_last_name">Also for attribution when submitting a report (optional/anonymous).</string>
 	<string name="txt_user_name">Username</string>
-	<string name="hint_user_name">Your Ushahidi username</string>
+	<string name="hint_user_name">Your Ushahidi username (optional)</string>
 	<string name="txt_password">Password</string>
-	<string name="hint_password">Your Ushahidi password.</string>
+	<string name="hint_password">Your Ushahidi password (optional)</string>
 	<string name="txt_email">E-mail address</string>
-	<string name="hint_email">For contact purposes only.</string>
+	<string name="hint_email">For contact purposes only. (optional)</string>
 	<string name="total_reports">Report quantity</string>
 	<string name="hint_total_reports">The total number of reports to fetch from the selected instance.</string>
 	<!-- Menu -->
@@ -81,9 +85,7 @@
 	<!--  about screen -->
 	<string name="menu_about">About</string>
 	<string name="ushahidi_url">Ushahidi.com</string>
-	<string name="welcome_mgs">Welcome to Ushahidi, which means "testimony" in Swhahili, where we are 
-		building a platform that crowdsources crisis information.Allowing anyone to submit crisis 
-		information through text messaging using a mobile phone, email or web form.</string>
+	<string name="welcome_mgs">Ushahidi-linda (\"Testimony\" + \"Protection\") This is a fork of Ushahidi on Android to prototype Orbot (Tor on Android) anonymity integration via SOCKS5. This codebase will ONLY work if Orbot is activated and connected to the Tor Network. You can download the Orbot beta and learn more at: http://guardianproject.info/apps/orbot  Ushahidi is a platform that crowdsources crisis information, allowing anyone to submit crisis information through text messaging using a mobile phone, email or web form.</string>
 	<string name="internet_connection">Network error, please ensure you are connected to the internet</string>
 	<string name="preferences_notifications">Notifications</string>
 </resources>

@@ -24,9 +24,15 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 	private EditTextPreference emailAddressPref;
 	private EditTextPreference userNamePref;
 	private EditTextPreference passwordPref;
+	
 	private CheckBoxPreference autoFetchCheckBoxPref;
 	private CheckBoxPreference clearCacheCheckBoxPref;
 	private CheckBoxPreference smsCheckBoxPref;
+	
+	//for Orbot Tor integration 
+	private CheckBoxPreference orbotCheckBoxPref;
+	
+	
 	private ListPreference autoUpdateTimePref;
 	private ListPreference saveItemsPref;
 	private ListPreference totalReportsPref;
@@ -51,6 +57,8 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 		saveItemsPref = new ListPreference(this);
 		totalReportsPref = new ListPreference(this);
 		smsCheckBoxPref = new CheckBoxPreference(this);
+		
+		orbotCheckBoxPref = new CheckBoxPreference(this);
 		
 		setPreferenceScreen(createPreferenceHierarchy());
 		this.saveSettings();
@@ -157,6 +165,13 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
         clearCacheCheckBoxPref.setTitle(R.string.txt_clear_cache);
         clearCacheCheckBoxPref.setSummary(R.string.hint_clear_cache);
         advancedScreenPref.addPreference(clearCacheCheckBoxPref);
+        
+        orbotCheckBoxPref.setKey("orbot_enable_preference");
+        orbotCheckBoxPref.setTitle(R.string.txt_orbot_enable);
+        orbotCheckBoxPref.setSummary(R.string.hint_orbot_enable);
+        orbotCheckBoxPref.setEnabled(false);
+        orbotCheckBoxPref.setChecked(true);
+        advancedScreenPref.addPreference(orbotCheckBoxPref);
         
         //SMS Preferences
       
