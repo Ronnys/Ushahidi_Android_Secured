@@ -1,6 +1,8 @@
 package org.addhen.ushahidi;
  
 
+import info.guardianproject.net.SOCKSHttpClient;
+
 import java.io.File;
 
 import java.text.MessageFormat;
@@ -34,7 +36,10 @@ import android.widget.Toast;
 public class UshahidiService extends Service {
 	public static final String PREFS_NAME = "UshahidiService";
 	public static boolean httpRunning = false;
-	public static final DefaultHttpClient httpclient = new DefaultHttpClient();
+	
+	//public static final DefaultHttpClient httpclient = new DefaultHttpClient();
+	public static final DefaultHttpClient httpclient = new SOCKSHttpClient(); //Enable routing to Orbot/Tor proxy
+	
 	public static Vector<String> mNewIncidentsImages = new Vector<String>();
 	public static String incidentsResponse = "";
 	public static String categoriesResponse = "";

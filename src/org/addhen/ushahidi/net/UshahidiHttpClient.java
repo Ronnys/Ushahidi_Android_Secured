@@ -15,13 +15,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicHeaderValueParser;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
 import org.addhen.ushahidi.UshahidiService;
@@ -96,7 +100,57 @@ public class UshahidiHttpClient {
 	}
 	
     public static boolean PostFileUpload(String URL, HashMap<String, String> params) throws IOException{
-        ClientHttpRequest req = null;
+        
+    	UshahidiService.httpRunning = true;
+
+		final HttpPost httpost = new HttpPost(URL);
+		
+		List<NameValuePair> data = new ArrayList<NameValuePair>();
+		
+		Iterator<Entry<String,String>> itData = params.entrySet().iterator();
+		while (itData.hasNext())
+		{
+			Entry<String,String> entry = itData.next();
+			
+			data.add(new BasicNameValuePair(entry.getKey(),entry.getValue()));
+		}
+
+		
+		if(data != null){
+			try {
+				//NEED THIS NOW TO FIX ERROR 417
+				httpost.getParams().setBooleanParameter( "http.protocol.expect-continue", false ); 
+				httpost.setEntity(new UrlEncodedFormEntity(data, HTTP.UTF_8));
+			} catch (final UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				UshahidiService.httpRunning = false;
+				return false;
+			}
+		}
+
+		// Post, check and show the result (not really spectacular, but works):
+		try {
+			HttpResponse response =  UshahidiService.httpclient.execute(httpost);
+			UshahidiService.httpRunning = false;
+			
+			if( Util.extractPayloadJSON(GetText(response.getEntity().getContent())) ){
+           	 
+           	 return true;
+            }
+			
+			return true;
+
+		} catch (final Exception e) {
+
+		} 
+		UshahidiService.httpRunning = false;
+		return true;
+    //	PostURL(URL, params, null);
+    	
+        
+        /*
+         * ClientHttpRequest req = null;
 
         try {
              URL url = new URL(URL);
@@ -133,6 +187,7 @@ public class UshahidiHttpClient {
         	//fall through and return false
         }
         return false;
+        */
    }
 	public static byte[] fetchImage(String address) throws MalformedURLException, IOException {
         InputStream in = null;

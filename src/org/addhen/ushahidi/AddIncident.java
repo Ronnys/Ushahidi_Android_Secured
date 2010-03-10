@@ -795,6 +795,7 @@ public class AddIncident extends Activity {
     	
     	StringBuilder urlBuilder = new StringBuilder(UshahidiService.domain);
     	urlBuilder.append("/api");
+    	
     	params.put("task","report");
 		params.put("incident_title", incidentTitle.getText().toString());
 		params.put("incident_description", incidentDesc.getText().toString()); 
@@ -810,6 +811,7 @@ public class AddIncident extends Activity {
 		params.put("person_last", UshahidiService.lastname);
 		params.put("person_email", UshahidiService.email);
 		params.put("filename", UshahidiService.fileName);
+		
 		
 		try {
 			return UshahidiHttpClient.PostFileUpload(urlBuilder.toString(), params);
